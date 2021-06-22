@@ -1,0 +1,1 @@
+*/5 * * * * {PATH TO PYTHON} {PATH TO SCRIPT} >> {PATH TO SCRIPT}/CleanUpLogs.txt 2>&1
