@@ -53,9 +53,7 @@ Example:
 
   * NOTE: I did not call python verbosely. I simply call the python that is in my $PATH. You may need to use the absolute path for your Python interpreter. (Being explicit is best practice.)
 
-* This opens VIM; press 'i' to edit and use the attached Crontab Example to format the cron job to run the script every 5 minutes. Be sure to use the insert the absolute path in the indicated locations.
-
-Want to change the frequency the script runs? https://crontab.guru/
+__Want to change the frequency the script runs?__ https://crontab.guru/
 
 
 ### Editing the Script
