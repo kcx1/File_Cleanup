@@ -51,7 +51,7 @@ Example:
 */5 * * * * python3 /Users/casey/Documents/Configurations/File_Cleanup/DesktopCleanUp.py >> /Users/casey/Documents/Configurations/File_Cleanup/CleanUpLogs.txt 2>&1
 ~~~
 
-    NOTE: I did not call python verbosely. I simply call the python that is in my $PATH. You may need to use the absolute path for your Python interpreter. (Being explicit is best practice.)
+  * NOTE: I did not call python verbosely. I simply call the python that is in my $PATH. You may need to use the absolute path for your Python interpreter. (Being explicit is best practice.)
 
 * This opens VIM; press 'i' to edit and use the attached Crontab Example to format the cron job to run the script every 5 minutes. Be sure to use the insert the absolute path in the indicated locations.
 
