@@ -19,6 +19,7 @@ script_path = os.path.dirname(os.path.abspath(__file__))  # Path to Script locat
 # Destination paths for moving files from Desktop.
 screenshot_path = os.path.normpath(f'{documents_path}/Files/ScreenShots/')  # Path to move screenshots
 pdf_path = os.path.normpath(f'{documents_path}/Files/PDFs/')  # Path to move PDFs
+vid_path = os.path.normpath(f'{documents_path}/Files/Vids/')
 
 # Logging path for stdout and stderr
 log_path = os.path.normpath(f'{script_path}/CleanUpLogs.txt')
@@ -30,6 +31,9 @@ def make_dirs():
     if not os.path.isdir(pdf_path):
         os.mkdir(pdf_path)
         print("PDF path not found: Creating directory")
+    if not os.path.isdir(vid_path):
+        os.mkdir(vid_path)
+        print("Video path not found: Creating directory")
 
 def minutes(num) -> int:
     # Returns seconds for the number of minutes given
@@ -69,7 +73,9 @@ def clean_desktop(time=hours(1)):
             elif file in pdfs:  # If the file is a pdf;
                     shutil.move(file, pdf_path)  # Move it to the pdf path
                     print(timestamp(), f'Moving {file}')  # Log the move
-
+            elif file in videos:
+                    shutil.move(file, vid_path)
+                    print(timestamp(), f'Moving {file}')
             else:
                 # If there is a file on the desktop, that is not in our list, log it. May address later.
                 print(f"Found {file}, but it's not a file type that I am moving. Doing nothing" )
