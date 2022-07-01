@@ -1,0 +1,9 @@
+# Ignore Hidden Files
+.*
+
+# Ignore Text Files
+*.txt
+
+# Ignore Log Files
+*.log
+
