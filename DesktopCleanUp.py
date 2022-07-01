@@ -22,7 +22,7 @@ pdf_path = os.path.normpath(f'{documents_path}/Files/PDFs/')  # Path to move PDF
 vid_path = os.path.normpath(f'{documents_path}/Files/Vids/')
 
 # Logging path for stdout and stderr
-log_path = os.path.normpath(f'{script_path}/CleanUpLogs.txt')
+log_path = os.path.normpath(f'{script_path}/CleanUpLogs.log')
 
 def make_dirs():
     if not os.path.isdir(screenshot_path):
