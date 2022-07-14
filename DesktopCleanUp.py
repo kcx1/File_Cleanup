@@ -5,6 +5,9 @@ import glob
 import datetime
 import logging
 
+##############################################################################
+#  CONFIGURATION
+##############################################################################
 
 current_time = time.time()  # Set current time to compare against.
 
@@ -16,6 +19,7 @@ home = os.path.expanduser('~')
 desktop_path = os.path.normpath(f'{home}/Desktop/')  # Path to Desktop
 download_path = os.path.normpath(f'{home}/Downloads/')  # Path to Downloads
 documents_path = os.path.normpath(f'{home}/Documents/')  # Path to Documents
+trash_path = os.path.normpath((f'{home}/.Trash/'))  # Path to trash can
 script_path = os.path.dirname(os.path.abspath(__file__))  # Path to Script location (Used for log file)
 
 # Destination paths for moving files from Desktop.
@@ -27,8 +31,17 @@ vid_path = os.path.normpath(f'{documents_path}/Files/Vids/')
 log_path = os.path.normpath(f'{script_path}/CleanUpLogs.log')
 
 # Logging config
-logging.basicConfig(level=logging.INFO, filename=log_path, format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
+logging.basicConfig(
+    level=logging.INFO,
+    filename=log_path,
+    format='%(asctime)s - %(message)s',
+    datefmt='%d-%b-%y %H:%M:%S'
+    )
 
+
+##############################################################################
+#  FUNCTIONS
+##############################################################################
 
 def make_dirs():
     if not os.path.isdir(screenshot_path):
@@ -107,7 +120,7 @@ def clean_folder(folder_path, time=days(30)):
                     shutil.rmtree(file_path)
                 else:
                     print("This is neither a file or a folder")  # Should never happen
-            except PermissionError as permission:  # This shouldn't happen, the bug that was causing this has been fixed.
+            except PermissionError as permission:  # This shouldn't happen
                 logging.exception(timestamp(), permission)
                 continue
             except Exception as err:
@@ -122,6 +135,10 @@ def clean_logs(kb=100):
         logging.debug(timestamp(), 'Logs are too large, removing')
 
 
+##############################################################################
+#  MAIN
+##############################################################################
+
 if __name__ == '__main__':
 
     #  Removing print statement to clean up Logs, Now time stamp is with each removal instead
@@ -132,6 +149,6 @@ if __name__ == '__main__':
         clean_desktop()
         clean_folder(download_path)
         clean_folder(screenshot_path, time=days(15))
+        clean_folder(trash_path, time=hours(3))
     except Exception as err:
-        logging.exception(f"Exception {e}: ")
-
+        logging.exception(f"Exception {err}: ")
