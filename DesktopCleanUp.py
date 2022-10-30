@@ -86,7 +86,7 @@ def clean_desktop(time=hours(1)):
     for file in files:
         if os.stat(file).st_ctime < current_time - time:  # if change time was more than an hour ago
             if file in images:  # Check to see if we should move the file to the screenshot path
-                if 'Screen Shot' in file:  # Double check that the file is a screen shot
+                if 'Screen Shot' in file or 'Screenshot' in file:  # Double check that the file is a screen shot
                     shutil.move(file, screenshot_path)  # Move the file
                     logging.info(f'Moving {file}')  # Log the move
                 else:
