@@ -1,0 +1,64 @@
+title = "File Cleanup Config"
+
+# File Paths that we want to run the cleanup script on. 
+# 
+# Note: If the path has a leading '/' the absolute path will be used. 
+#       Otherwise, the path relative to the user's $HOME folder will
+#       will be used. 
+
+[[Cleanup]]
+name = "Desktop"
+path = "Desktop"
+time.number = 1
+time.unit = "H"
+
+    [[move]]
+    name = "Screenshots"
+    type = [".png"]
+    destination = "Documents/Files/Screenshots"
+    filter.exclusive = false  # False uses "OR" logic, while True uses "AND"
+    filter.list = ["Screenshot", "Screen Shot"]
+
+    [[move]]
+    name = "Movies"
+    type = [".mov", ".mp4"]
+    destination = "Documents/Files/Videos"
+    
+
+    [[move]]
+    name = "Images"
+    type = [".jpg", ".png"]
+    destination = "Documents/Files/Images"
+    
+
+    [[move]]
+    name = "PDF"
+    type = [".pdf"]
+    destination = "Documents/Files/PDFs"
+
+[[Cleanup]]
+name = "Downloads"
+path = "Downloads"
+delete = true
+
+[[Cleanup]]
+name = "Screenshots"
+path = "Documents/Files/Screenshots"
+time.number = 15
+time.unit = "D"
+delete = true
+
+[[Cleanup]]
+name = "Trash Bin"
+path = ".Trash"
+time.number = 3
+time.unit = "Days"
+delete = true
+
+
+
+[Logs]
+enable = true
+path = "Documents/Files/Logs"
+max_size = 100  # KiloBytes - If not provided default of 100 is used. 
+
