@@ -51,9 +51,23 @@ Below I've included an [example configuration](#example) to illustrate the possi
    max_size = 100                         KiloBytes - If not provided default of 100 is used.
    ```
 
+## Install
+
+I recommend creating a virtual environment so that you don't end up with conflicting system packages. There are many ways to do this.
+[Virtualenv](https://virtualenv.pypa.io/en/latest/) is probably the most common. I tend to use [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+
+Python 3.11 is required.
+
+Once you have the virtual env setup and have activated it you can install it using:
+
+```
+pip install git+https://github.com/kcx1/File_Cleanup
+```
+This will install the FileCleanup package.
 
 
-### Setup Crontab
+
+## Setup Crontab
 
 * [Enable cron:](https://osxdaily.com/2020/04/27/fix-cron-permissions-macos-full-disk-access/)
 
@@ -68,10 +82,10 @@ crontab -e
 * Copy the code below into your crontab editor while replacing the {CURLY BRACKETS} with the actual path to the file.
 
 ~~~
-*/5 * * * * {PATH TO PYTHON} {PATH TO SCRIPT} >> {PATH TO SCRIPT}/CleanUpLogs.txt 2>&1
+*/5 * * * * {PATH TO PYTHON} {PATH TO SCRIPT} >> /dev/null 2>&1
 ~~~
 
-NOTE: Be sure to insert the correct file paths
+_NOTE: Be sure to insert the correct file paths; You may want to temporarily redirect to a file instead of `/dev/null` to debug._
 
 * Once you have finished writing the cron job, press the esc key to leave "insert mode"
 
@@ -93,7 +107,7 @@ Here's an example of what my crontab looks like.
 Example:
 
 ~~~
-*/5 * * * * python3 /Users/casey/Documents/Configurations/File_Cleanup/DesktopCleanUp.py >> /Users/casey/Documents/Configurations/File_Cleanup/CleanUpLogs.txt 2>&1
+*/5 * * * * python3 /Users/kcx1/Documents/Configurations/File_Cleanup/DesktopCleanUp.py >> /Users/kcx1/Documents/Configurations/File_Cleanup/CleanUpLogs.txt 2>&1
 ~~~
 
 * NOTE: I did not call python verbosely. I simply call the python that is in my $PATH. You may need to use the absolute path for your Python interpreter. (Being explicit is best practice.)

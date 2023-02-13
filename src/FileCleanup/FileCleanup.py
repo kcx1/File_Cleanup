@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+
 import shutil
 import time
 import logging
@@ -185,12 +187,16 @@ def cleanup():
         clean_logs()
 
 
+def main():
+    try:
+        cleanup()
+    except Exception as err:
+        logging.exception(f"Exception {err}: ")
+
+
 ##############################################################################
 #  MAIN
 ##############################################################################
 
 if __name__ == '__main__':
-    try:
-        cleanup()
-    except Exception as err:
-        logging.exception(f"Exception {err}: ")
+    main()
