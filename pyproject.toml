@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "FileCleanup"
+version = "1.0.1"
+authors = [
+    {name = "Casey Compton", email = "Ccompton42@gmail.com"}
+]
+description = "Python script used to run automated file cleanups"
+readme = "README.md"
+requires-python = ">=3.11"
+
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[project.scripts]
+fclean = "FileCleanup.file_cleanup:main"
