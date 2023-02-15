@@ -5,7 +5,7 @@ import time
 import logging
 from pathlib import Path
 from functools import wraps
-from src.FileCleanup.config import config
+from FileCleanup.config import config
 
 ##############################################################################
 #  CONFIGURATION
