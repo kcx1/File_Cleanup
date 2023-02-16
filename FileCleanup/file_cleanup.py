@@ -130,14 +130,6 @@ def clean_logs(kb=100):
 
 
 @log("info")
-def check_dirs(destination_path):
-    path = Path(destination_path)
-    if not path.is_dir():
-        path.mkdir(parents=True)
-        return f"Creating Path: {path}"
-
-
-@log("info")
 def move_file(file, dest):
     return f"Moving: {file.rename(dest.joinpath(file.name))}"
 
