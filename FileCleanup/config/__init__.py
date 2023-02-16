@@ -1,5 +1,5 @@
 import pathlib
-
+from typing import Dict, Any
 
 try:
     import tomllib  # Preferred lib
@@ -8,4 +8,4 @@ except ImportError or ModuleNotFoundError as err:  # ModuleNotFoundError
 
 path = pathlib.Path(__file__).parent / "config.toml"
 with path.open(mode="rb") as toml:
-    config = tomllib.load(toml)
+    config: dict[str, Any] = tomllib.load(toml)

@@ -120,6 +120,9 @@ def rm_files(file):
 
 @log("info")
 def clean_logs(kb=100):
+    # Use user settings if set
+    if "max_size" in logs.keys():
+        kb = logs["max_size"]
     kb *= 1000  # set kb to bytes
     if logpath().stat().st_size > kb:  # if file size is greater than the kB argument in bytes
         logpath().unlink()
@@ -164,6 +167,9 @@ def clean_folder(folder, _time=days(30)):
 
 
 def cleanup():
+
+    clean_logs()
+
     for entry in config.values():
         path = normalize(entry['path'])
         if entry["operation"].lower() == "move":
@@ -180,11 +186,6 @@ def cleanup():
 
         elif entry["operation"].lower() == "delete":
             clean_folder(path, _time=get_time(entry))
-
-    if "max_size" in logs.keys():
-        clean_logs(kb=logs["max_size"])
-    else:
-        clean_logs()
 
 
 def main():
