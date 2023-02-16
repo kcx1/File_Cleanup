@@ -12,5 +12,17 @@ description = "Python script used to run automated file cleanups"
 readme = "README.md"
 requires-python = ">=3.11"
 
+[tool.setuptools]
+    include-package-data = true
+    packages = ["FileCleanup", "FileCleanup.config"]
+
+#[tool.setuptools.packages.find]
+#    namespaces = true
+#    where = ["FileCleanup"]
+
+[tool.setuptools.package-data]
+    FileCleanup = ["config/*.toml"]
+
+
 [project.scripts]
 fclean = "FileCleanup.file_cleanup:main"
