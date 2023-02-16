@@ -11,6 +11,8 @@ so that the files only get deleted if they haven't been accessed within the time
 The move mode allows users to pick certain file types and have them automatically moved from one directory to another with optional
 parameters and filters.
 
+Finally there is a logging parameter that you can set so that you can easily look back at the history of the script.
+
 Below I've included an [example configuration](#example) to illustrate the possible options.
 
 
@@ -61,15 +63,17 @@ Python 3.11 is required.
 Once you have the virtual env setup and have activated it you can install it using:
 
 ```
-pip install git+https://github.com/kcx1/File_Cleanup
+python -m pip install git+https://github.com/kcx1/File_Cleanup
 ```
-This will install the FileCleanup package.
+This will install the FileCleanup package. Once installed before you leave your virtual environment; I suggest that you type: ```which fclean``` and copy the path. (We'll use it to setup the crontab)
 
+## Using the script
 
+The package create a convenient shell command that will allow you to run the script manually. Simply invoke the fclean command, and the script will run manually.
 
 ## Setup Crontab
 
-* [Enable cron:](https://osxdaily.com/2020/04/27/fix-cron-permissions-macos-full-disk-access/)
+* [Enable cron on MacOS:](https://osxdaily.com/2020/04/27/fix-cron-permissions-macos-full-disk-access/)
 
 * Open crontab editor by opening your terminal and typing:
 
@@ -79,10 +83,10 @@ crontab -e
 
 * Next press "i" to edit the text (switch to insert mode).
 
-* Copy the code below into your crontab editor while replacing the {CURLY BRACKETS} with the actual path to the file.
+* Paste the results of ```which fclean``` into the curly brackets bellow. _NOTE: If you decided to install FileCleanup as a global package you could just use:_ ```"${which fclean}"``` Additionally you could also call the script in python directly if you prefer.
 
 ~~~
-*/5 * * * * {PATH TO PYTHON} {PATH TO SCRIPT} >> /dev/null 2>&1
+*/5 * * * * {RESULTS OF WHICH FCLEAN} >> /dev/null 2>&1
 ~~~
 
 _NOTE: Be sure to insert the correct file paths; You may want to temporarily redirect to a file instead of `/dev/null` to debug._
@@ -107,9 +111,9 @@ Here's an example of what my crontab looks like.
 Example:
 
 ~~~
-*/5 * * * * python3 /Users/kcx1/Documents/Configurations/File_Cleanup/DesktopCleanUp.py >> /Users/kcx1/Documents/Configurations/File_Cleanup/CleanUpLogs.txt 2>&1
+*/5 * * * *  /Users/kcx1/miniforge3/envs/dev/bin/fclean >> /dev/null 2>&1
 ~~~
 
-* NOTE: I did not call python verbosely. I simply call the python that is in my $PATH. You may need to use the absolute path for your Python interpreter. (Being explicit is best practice.)
+* There you go - the script will run every 5 minutes and will keep your folders clean. 
 
 __Want to change the frequency the script runs?__ https://crontab.guru/
