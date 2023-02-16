@@ -1,28 +1,23 @@
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+    requires = ["setuptools"]
+    build-backend = "setuptools.build_meta"
 
 [project]
-name = "FileCleanup"
-version = "1.0.1"
-authors = [
-    {name = "Casey Compton", email = "Ccompton42@gmail.com"}
-]
-description = "Python script used to run automated file cleanups"
-readme = "README.md"
-requires-python = ">=3.11"
+    name = "FileCleanup"
+    version = "1.0.1"
+    description = "Python script used to run automated file cleanups"
+    readme = "README.md"
+    requires-python = ">=3.11"
+    authors = [
+            {name = "Casey Compton", email = "Ccompton42@gmail.com"}
+        ]
 
 [tool.setuptools]
     include-package-data = true
     packages = ["FileCleanup", "FileCleanup.config"]
 
-#[tool.setuptools.packages.find]
-#    namespaces = true
-#    where = ["FileCleanup"]
-
 [tool.setuptools.package-data]
     FileCleanup = ["config/*.toml"]
 
-
 [project.scripts]
-fclean = "FileCleanup.file_cleanup:main"
+    fclean = "FileCleanup.file_cleanup:main"
