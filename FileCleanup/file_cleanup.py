@@ -1,5 +1,3 @@
-#! /usr/bin/env python
-
 import shutil
 import time
 import logging
@@ -43,7 +41,7 @@ logging.basicConfig(
 
 # Wrappers
 def log(severity):
-    def decorartor(func):
+    def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
             # Log the results of a function prefixed with the timestamp
@@ -54,7 +52,7 @@ def log(severity):
                     log_func(func_result)
                 return None
         return wrapper
-    return decorartor
+    return decorator
 
 
 ##############################################################################
@@ -95,7 +93,7 @@ def get_time(config_entry, optional_time=None):
     if "time" in config_entry.keys():
         return set_time(config_entry["time"])
     else:
-        # Fallback timsetting
+        # Fallback time setting
         return optional_time or days(30)
 
 
