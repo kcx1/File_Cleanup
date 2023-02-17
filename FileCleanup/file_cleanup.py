@@ -11,7 +11,7 @@ from FileCleanup.config import config
 ##############################################################################
 
 current_time = time.time()  # Set current time to compare against.
-
+_ = config.pop("Config")  # Remove the config parameter; not needed for this script
 logs = config.pop("Logs")  # Remove log snippet from rest of config.toml
 
 

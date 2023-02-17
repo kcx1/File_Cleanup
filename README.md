@@ -68,7 +68,14 @@ This will install the FileCleanup package. Once installed before you leave your 
 
 ## Using the script
 
-The package create a convenient shell command that will allow you to run the script manually. Simply invoke the fclean command, and the script will run manually.
+The package create a convenient shell command that will allow you to run the script manually. Simply invoke the new ```fclean``` command, and the script will run manually.
+
+## Configuring the script
+
+You'll need to locate the config.toml file in order to setup your own custom congfiguration. The file I've included should work out of the box and is the configuration that I currently use.
+However, I wanted to provide an eeasy way to edit the config so that the behavior of the script could be easily modified and customized.
+
+To locate the config 
 
 ## Setup Crontab
 
@@ -90,15 +97,7 @@ crontab -e
 
 _NOTE: Be sure to insert the correct file paths; You may want to temporarily redirect to a file instead of `/dev/null` to debug._
 
-* Once you have finished writing the cron job, press the esc key to leave "insert mode"
-
-* Now press:
-
-```
-:wq
-```
-* Then press Enter. This will write and quit VIM.
-
+* Once you have finished writing the cron job, press the esc key to leave "insert mode" and press:```:wq```  and Enter. This will write and quit VIM.
 * You will get a message _crontab: installing new crontab_
 * You can double check your crontab:
 ```
@@ -115,4 +114,12 @@ Example:
 
 * There you go - the script will run every 5 minutes and will keep your folders clean. 
 
-__Want to change the frequency the script runs?__ https://crontab.guru/
+__Want to change the frequency the script runs?__ [Crontab calculator](https://crontab.guru/)
+
+## Uninstall
+
+To remove the script activate the virtual environment that you used to pip install (Hint: You cna find the path in your crontab) and type:
+
+```
+python -m pip uninstall FileClean
+```

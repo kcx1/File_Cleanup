@@ -21,3 +21,4 @@
 
 [project.scripts]
     fclean = "FileCleanup.file_cleanup:main"
+    fclean-config = "FileCleanup.symlink_config:main"

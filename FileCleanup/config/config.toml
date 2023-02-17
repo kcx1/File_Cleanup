@@ -39,6 +39,9 @@
 #    max_size = 100                         KiloBytes - If not provided default of 100 is used.
 
 
+[Config]
+    location = "Documents/Files/Config/"
+
 [Desktop]
     path = "Desktop"
     time.number = 1
@@ -89,7 +92,6 @@
     time.number = 3
     time.unit = "Days"
     operation = "delete"
-
 
 
 [Logs]
