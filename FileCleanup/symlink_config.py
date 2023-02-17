@@ -1,10 +1,10 @@
 from pathlib import Path
-import os
 from FileCleanup.file_cleanup import normalize, configuration
 
 
 # Path to installed config
-config_file = Path("config/config.toml").absolute()
+script_path = Path(__file__).parent
+config_file = script_path.joinpath("config/config.toml").absolute()
 # Path declared in config
 symlink_dir = normalize(configuration["location"])
 symlink = symlink_dir.joinpath("config.toml").absolute()
@@ -19,9 +19,7 @@ def main():
         SystemExit("Config File Already Exisits")
 
     if symlink.is_absolute() and config_file.is_absolute():
-        print(Path.cwd(), symlink, config_file)
         symlink.symlink_to(config_file, True)
-        # os.link(config_file.__str__(), symlink.__str__())
 
 
 if __name__ == "__main__":
