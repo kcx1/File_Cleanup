@@ -23,28 +23,27 @@ Below I've included an [example configuration](#example) to illustrate the possi
 
 ```
 [Example]
+    path = "some/path/"                    If not absolute, it is assumed to be relative to the user's /home
+    operation = "move | delete"            Mode of cleanup; can move files or delete them.
 
-   path = "some/path/"                    If there is a leading slash an absolute path is assumed; otherwise it is relative to the user's /home
-   operation = "move | delete"            Mode of cleanup; can move files or delete them.
-
-   OPTIONAL
-   time.number = int                      number is an integear multiplied by the unit; default is 30 d
-   time.unit = "M | H | D"                Unit of time is defined in Minutes, Hours, Days. Whole words or abbreviations can be used.
+    OPTIONAL
+    time.number = int                      number is an integear multiplied by the unit; default is 30 d
+    time.unit = "M | H | D"                Unit of time is defined in Minutes, Hours, Days. Whole words or abbreviations can be used.
 
 
-   [[Example.move]]                       If you set the mode to move; you need to specify a few additional filter parameters
-   name = "name"                          Currently not used programatically, but helpful to keep things organized. Not required.
-   type = [".pdf", '.jpg', '.doc']        A list of the file extensions you want to include in this filter. ".*" to select all.
-   destination = "some/path"
+    [[Example.move]]                       If you set the mode to move; you need to specify a few additional filter parameters
+        name = "name"                          Currently not used programatically, but helpful to keep things organized. Not required.
+        type = [".pdf", '.jpg', '.doc']        A list of the file extensions you want to include in this filter. ".*" to select all.
+        destination = "some/path"
 
-   OPTIONAL
-   filter.name = "Name"                   Named for organization only; not used.
-   filter.destination = "some/path/"
-   filter.time.number = int               Define a time if you want a different time for your filter. Needs to be less time than the parent time.
-   filter.time.unit = "M | H | D"
-   filter.list = ["Extra", "filters"]     All of these get included in the filter.
-                                          The additional filter help you have different parameters for files with the same extension. For EXAMPLE:
-                                          You can have screenshots go to a different folder than all of the other .png files.
+        OPTIONAL
+        filter.name = "Name"                   Named for organization only; not used.
+        filter.destination = "some/path/"
+        filter.time.number = int               Define a time if you want a different time for your filter. Needs to be less time than the parent time.
+        filter.time.unit = "M | H | D"
+        filter.list = ["Extra", "filters"]    All of these get included in the filter.
+                                              The additional filter help you have different parameters for files with the same extension. For EXAMPLE:
+                                              You can have screenshots go to a different folder than all of the other .png files.
 
 [Logs]
    enable = true | false                  Enable / disable logs

@@ -10,7 +10,7 @@
 
 #[Example]
 #
-#    path = "some/path/"                    If there is a leading slash an absolute path is assumed; otherwise it is relative to the user's /home
+#    path = "some/path/"                    If not absolute, it is assumed to be relative to the user's /home
 #    operation = "move | delete"            Mode of cleanup; can move files or delete them.
 
 #    OPTIONAL
