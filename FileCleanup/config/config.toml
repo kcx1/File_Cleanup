@@ -46,25 +46,35 @@
     operation = "move"
 
         [[Desktop.move]]
-        name = "Images"
-        type = [".png", ".jpg"]
-        destination = "Documents/Files/Images"
-        filter.name = "Screenshots"
-        filter.destination = "Documents/Files/Screenshots"
-        filter.list = ["Screenshot", "Screen Shot"]
+            name = "Images"
+            type = [".png", ".jpg"]
+            destination = "Documents/Files/Images"
+            filter.name = "Screenshots"
+            filter.destination = "Documents/Files/Screenshots"
+            filter.list = ["Screenshot", "Screen Shot"]
 
         [[Desktop.move]]
-        name = "Movies"
-        type = [".mov", ".mp4"]
-        destination = "Documents/Files/Videos"
+            name = "Movies"
+            type = [".mov", ".mp4"]
+            destination = "Documents/Files/Videos"
 
         [[Desktop.move]]
-        name = "PDF"
+            name = "PDF"
+            type = [".pdf"]
+            destination = "Documents/Files/PDFs"
+
+[Downloads-Move]
+    path = "Downloads"
+    operation = "move"
+    time = { number = 30, unit = "M" }
+
+    [[Downloads-Move.move]]
+        name = "PDFs"
         type = [".pdf"]
         destination = "Documents/Files/PDFs"
 
 
-[Downloads]
+[Downloads-Delete]
     path = "Downloads"
     operation = "delete"
 
