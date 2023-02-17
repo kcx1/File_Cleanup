@@ -34,12 +34,12 @@
 #
 #[Logs] #EXAMPLE
 #    enable = true | false                  Enable / disable logs
-#    path = "Documents/Files/Logs/"         Path to logs - not inluding log file name.
+#    path = "Documents/Files/Logs/"         Path to logs - not including log file name.
 #    name = "cleanup.log"                   Log file name
 #    max_size = 100                         KiloBytes - If not provided default of 100 is used.
 
 
-[Config]
+[Configuration]
     location = "Documents/Files/Config/"
 
 [Desktop]
