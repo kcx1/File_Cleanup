@@ -40,7 +40,7 @@
 
 
 [Configuration]
-    location = "Documents/Files/Config/"
+    location = "Documents"
 
 [Desktop]
     path = "Desktop"

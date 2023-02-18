@@ -11,7 +11,7 @@ from FileCleanup.config import config
 ##############################################################################
 
 current_time = time.time()  # Set current time to compare against.
-configuration = config.pop("Configuration")  # Remove the configuration parameter; not needed for this script
+configuration = config.pop("Configuration")  # Remove the configuration parameter; imported in the symlink_config.py
 logs = config.pop("Logs")  # Remove log snippet from rest of config.toml
 
 

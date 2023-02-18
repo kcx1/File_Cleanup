@@ -13,6 +13,8 @@ parameters and filters.
 
 Finally there is a logging parameter that you can set so that you can easily look back at the history of the script.
 
+__NOTE: Both the 'Configuration' and the 'Logs' parameter are required.__
+
 Below I've included an [example configuration](#example) to illustrate the possible options.
 
 
@@ -22,6 +24,9 @@ Below I've included an [example configuration](#example) to illustrate the possi
 ### EXAMPLE
 
 ```
+[Configuration]                            ** Required **
+    location = "Documents"                 Directory in which to symlink the configuration file.
+
 [Example]
     path = "some/path/"                    If not absolute, it is assumed to be relative to the user's /home
     operation = "move | delete"            Mode of cleanup; can move files or delete them.
@@ -45,7 +50,7 @@ Below I've included an [example configuration](#example) to illustrate the possi
                                               The additional filter help you have different parameters for files with the same extension. For EXAMPLE:
                                               You can have screenshots go to a different folder than all of the other .png files.
 
-[Logs]
+[Logs]                                    ** Required **
    enable = true | false                  Enable / disable logs
    path = "Documents/Files/Logs/"         Path to logs - not inluding log file name.
    name = "cleanup.log"                   Log file name
@@ -72,10 +77,17 @@ The package create a convenient shell command that will allow you to run the scr
 
 ## Configuring the script
 
-You'll need to locate the config.toml file in order to setup your own custom congfiguration. The file I've included should work out of the box and is the configuration that I currently use.
-However, I wanted to provide an eeasy way to edit the config so that the behavior of the script could be easily modified and customized.
+You'll need access to the _config.toml_ file in order to setup your own custom congfiguration. The file I've included should work out of the box and is the configuration that I currently use.
+However, I wanted to provide an easy way to edit the config so that the behavior of the script could be easily modified and customized.
 
-To locate the config 
+This package includes a second binary ```fclean-config``` This command will generate a symbolic link to you the package's config.toml fle. When running for the first time the script will
+install the symlink file into the user's Documents folder. Once linked - you can set location parameter and re-run the command and the scrpt will install it in the new location. You can
+then safely delete the original symlink.
+
+You can also dig into the site-packages from your python interperter and locate the source file here:
+
+```../site-packages/FileCleanup/config/config.toml```
+
 
 ## Setup Crontab
 
