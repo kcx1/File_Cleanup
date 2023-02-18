@@ -232,6 +232,8 @@ def move_file(file: Path, dest: Path) -> str:
     Returns:
         str: String for logging
     """
+    if not dest.exists():
+        dest.mkdir(parents=True, exist_ok=True)
     return f"Moving: {file.rename(dest.joinpath(file.name))}"
 
 
