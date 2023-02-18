@@ -13,7 +13,7 @@ parameters and filters.
 
 Finally there is a logging parameter that you can set so that you can easily look back at the history of the script.
 
-__NOTE: Both the 'Configuration' and the 'Logs' parameter are required.__
+###### NOTE: Both the 'Configuration' and the 'Logs' parameter are required.
 
 Below I've included an [example configuration](#example) to illustrate the possible options.
 
