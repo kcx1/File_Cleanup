@@ -9,7 +9,7 @@
     readme = "README.md"
     requires-python = ">=3.11"
     authors = [
-            {name = "Casey Compton", email = "Ccompton42@gmail.com"}
+            {name = "Casey C", email = "kxc1codes@gmail.com"}
         ]
 
 [tool.setuptools]
