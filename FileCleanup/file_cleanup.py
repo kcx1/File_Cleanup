@@ -114,7 +114,7 @@ def days(num: int) -> int:
     return hours(24)*num
 
 
-def set_time(t: dict) -> int or None:
+def set_time(t: dict) -> int:
     """
     Returns the number of seconds within provided configuration snippit. Where 'unit' sets the unit of time
     and 'number' sets the quantity. Only the first character of the unit is concidered; which allows users to
@@ -140,10 +140,10 @@ def set_time(t: dict) -> int or None:
             return days(num)
         case _:
             logging.exception("Invalid time settings in the config")
-            return None
+            raise Exception("Invalid time settings in the config")
 
 
-def get_time(config_entry: dict, optional_time: int or None = None) -> int:
+def get_time(config_entry: dict, optional_time: int | None = None) -> int:
     """
     Use the time settings from the user's config or fallback to the default settings.
     User settings have priority, then optional_time defined at the function call, and
@@ -200,7 +200,7 @@ def rm_files(file: Path) -> str:
 
 
 @log("info")
-def clean_logs(kb: int = 100) -> str:
+def clean_logs(kb: int = 100) -> str | None:
     """
     If the log file exceeds the maximium size then remove it. The maximum size specified in the config.toml
     will ahve priority. Otherwise use the one provided in the function call.
@@ -218,16 +218,17 @@ def clean_logs(kb: int = 100) -> str:
     if logpath().stat().st_size > kb:  # if file size is greater than the kB argument in bytes
         logpath().unlink()
         return 'Logs are too large, removing'
+    return None
 
 
 @log("info")
 def move_file(file: Path, dest: Path) -> str:
     """
-    Move the given file to the given destination
+    Move the given file to the given destination; If destination doesn't exit, create it.
 
     Args:
         file (Path): File to move
-        dest (Path): New location
+        dest (Path): New location directory
 
     Returns:
         str: String for logging
@@ -237,7 +238,7 @@ def move_file(file: Path, dest: Path) -> str:
     return f"Moving: {file.rename(dest.joinpath(file.name))}"
 
 
-def filter_files(path: Path, _config: dict, extension: str) -> Generator[Path]:
+def filter_files(path: Path, _config: dict, extension: str) -> Generator[Path, None, None]:
     """
     Generator function. Yields a path object if it meets the parameters of the filter.
 
