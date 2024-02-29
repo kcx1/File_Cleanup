@@ -1,0 +1,1 @@
+/home/casey/Projects/File_Cleanup/rust/file_cleanup/target/debug/file_cleanup: /home/casey/Projects/File_Cleanup/rust/file_cleanup/src/lib.rs /home/casey/Projects/File_Cleanup/rust/file_cleanup/src/main.rs

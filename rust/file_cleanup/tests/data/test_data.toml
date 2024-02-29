@@ -1,0 +1,114 @@
+[Documents]
+    path = "Documents"
+    [[Documents.Move]]
+        destination = "Documents/Files"
+        time = { number = 30, unit = "M" }
+
+[Downloads]
+    path = "Downloads"
+    time = { number = 30, unit = "M" }
+    [[Downloads.Move.Images]]
+        destination = "Downloads/Files"
+        filetypes = [".png", ".jpg"]
+        match = [ "%d" ]  # Some sort of regex matching
+
+
+[Desktop]
+    path = "Desktop"
+    time.number = 1
+    time.unit = "H"
+    [[Desktop.Move.Screenshots]]
+        destination = "Documents/Files/Screenshots"
+        match = ["Screenshot", "Screen Shot"]
+        filetypes = [".png"]
+
+    [[Desktop.Move.Images]]
+        destination = "Documents/Files/Images"
+        filetypes = [".png", ".jpg"]
+
+    [[Desktop.Move.Movies]]
+        destination = "Documents/Files/Videos"
+        filetypes = [".mov", ".mp4"]
+
+    [[Desktop.Move.PDFs]]
+        destination = "Documents/Files/PDFs"
+        filetypes = [".pdf"]
+
+    [[Desktop.Delete.EverythingElse]]
+
+
+[[Trash-Bin.Delete.Everything]]
+path = ".Trash"
+time = { number = 3, unit = "D" }
+        
+
+
+
+
+
+
+
+
+
+
+# [Configuration]
+#     location = "Documents"
+#
+# [Desktop]
+#     path = "Desktop"
+#     time.number = 1
+#     time.unit = "H"
+#     operation = "move"
+#
+#         [[Desktop.move]]
+#             name = "Images"
+#             type = [".png", ".jpg"]
+#             destination = "Documents/Files/Images"
+#             filter.name = "Screenshots"
+#             filter.destination = "Documents/Files/Screenshots"
+#             filter.list = ["Screenshot", "Screen Shot"]
+#
+#         [[Desktop.move]]
+#             name = "Movies"
+#             type = [".mov", ".mp4"]
+#             destination = "Documents/Files/Videos"
+#
+#         [[Desktop.move]]
+#             name = "PDF"
+#             type = [".pdf"]
+#             destination = "Documents/Files/PDFs"
+#
+# [Downloads-Move]
+#     path = "Downloads"
+#     operation = "move"
+#     time = { number = 30, unit = "M" }
+#
+#     [[Downloads-Move.move]]
+#         name = "PDFs"
+#         type = [".pdf"]
+#         destination = "Documents/Files/PDFs"
+#
+#
+# [Downloads-Delete]
+#     path = "Downloads"
+#     operation = "delete"
+#
+# [Screenshots]
+#     path = "Documents/Files/Screenshots"
+#     time.number = 15
+#     time.unit = "D"
+#     operation = "delete"
+#
+# [Trash-Bin]
+#     path = ".Trash"
+#     time.number = 3
+#     time.unit = "Days"
+#     operation = "delete"
+#
+#
+# [Logs]
+#     enable = true
+#     path = "Documents/Files/Logs/"
+#     name = "cleanup.log"
+#     max_size = 100  # KiloBytes - If not provided default of 100 is used.
+#
